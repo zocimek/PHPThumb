@@ -1,0 +1,17 @@
+{
+    "name": "zocim/php-thumb",
+    "description": "PHP Thumbnail & Image Manipulation Library",
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "authors": [
+        {
+            "name": "Ian Selby",
+            "email": "ian@gxdlabs.com"
+        },
+        {
+            "name" : "Łukasz Pospiech",
+            "email" : "zocimek@gmail.com"
+        }
+    ]
+}
