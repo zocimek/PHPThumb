@@ -45,7 +45,7 @@ class GdReflection
 	protected $newImage;
 	protected $options;
 
-	public function createReflection ($percent, $reflection, $white, $border, $borderColor, &$that)
+	public function createReflection ($percent, $reflection, $white, $border, $borderColor, $that)
 	{
 		// bring stuff from the parent class into this class...
 		$this->parentInstance 		= $that;
@@ -125,7 +125,7 @@ class GdReflection
 		$this->currentDimensions['height']	= $newHeight;
 		$this->parentInstance->setCurrentDimensions($this->currentDimensions);
 
-		return $that;
+		return $this->parentInstance;
 	}
 
 	/**
@@ -177,6 +177,3 @@ class GdReflection
         return ($asString ? "{$rgb[0]} {$rgb[1]} {$rgb[2]}" : $rgb);
     }
 }
-
-$pt = PhpThumb::getInstance();
-$pt->registerPlugin('GdReflection', 'gd');

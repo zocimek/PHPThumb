@@ -140,9 +140,9 @@ abstract class ThumbBase
 		$newImport 			= new $object();
 		// the name of the new object (class name)
 		$importName			= get_class($newImport);
+
 		// the new functions to import
 		$importFunctions 	= get_class_methods($newImport);
-
 		// add the object to the registry
 		array_push($this->imported, array($importName, $newImport));
 
@@ -211,11 +211,11 @@ abstract class ThumbBase
 	{
 		if( array_key_exists($method, $this->importedFunctions))
 		{
-			$args[] =& $this;
+			$args[] = $this;
 			return call_user_func_array(array($this->importedFunctions[$method], $method), $args);
 		}
 
-		throw new BadMethodCallException ('Call to undefined method/class function: ' . $method);
+		throw new \BadMethodCallException ('Call to undefined method/class function: ' . $method);
 	}
 
     /**

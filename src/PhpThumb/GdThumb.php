@@ -234,12 +234,12 @@ class GdThumb extends ThumbBase
 		// make sure our arguments are valid
 		if (!is_numeric($maxWidth))
 		{
-			throw new InvalidArgumentException('$maxWidth must be numeric');
+			throw new \InvalidArgumentException('$maxWidth must be numeric');
 		}
 
 		if (!is_numeric($maxHeight))
 		{
-			throw new InvalidArgumentException('$maxHeight must be numeric');
+			throw new \InvalidArgumentException('$maxHeight must be numeric');
 		}
 
 		// make sure we're not exceeding our image size if we're not supposed to
@@ -307,7 +307,7 @@ class GdThumb extends ThumbBase
 		// make sure our arguments are valid
 		if ((!is_numeric($width) || $width  == 0) && (!is_numeric($height) || $height == 0))
 		{
-			throw new InvalidArgumentException('$width and $height must be numeric and greater than zero');
+			throw new \InvalidArgumentException('$width and $height must be numeric and greater than zero');
 		}
 
 		if (!is_numeric($width) || $width  == 0)
@@ -434,12 +434,12 @@ class GdThumb extends ThumbBase
 		// make sure our arguments are valid
 		if (!is_numeric($width) || $width  == 0)
 		{
-			throw new InvalidArgumentException('$width must be numeric and greater than zero');
+			throw new \InvalidArgumentException('$width must be numeric and greater than zero');
 		}
 
 		if (!is_numeric($height) || $height == 0)
 		{
-			throw new InvalidArgumentException('$height must be numeric and greater than zero');
+			throw new \InvalidArgumentException('$height must be numeric and greater than zero');
 		}
 
 		// make sure we're not exceeding our image size if we're not supposed to
@@ -563,12 +563,12 @@ class GdThumb extends ThumbBase
 		// make sure our arguments are valid
 		if (!is_numeric($width) || $width  == 0)
 		{
-			throw new InvalidArgumentException('$width must be numeric and greater than zero');
+			throw new \InvalidArgumentException('$width must be numeric and greater than zero');
 		}
 
 		if (!is_numeric($height) || $height == 0)
 		{
-			throw new InvalidArgumentException('$height must be numeric and greater than zero');
+			throw new \InvalidArgumentException('$height must be numeric and greater than zero');
 		}
 
 		// make sure we're not exceeding our image size if we're not supposed to
@@ -692,7 +692,7 @@ class GdThumb extends ThumbBase
 	{
 		if (!is_numeric($percent))
 		{
-			throw new InvalidArgumentException ('$percent must be numeric');
+			throw new \InvalidArgumentException ('$percent must be numeric');
 		}
 
 		$this->percent = intval($percent);
@@ -743,12 +743,12 @@ class GdThumb extends ThumbBase
 	{
 		if (!is_numeric($cropWidth))
 		{
-			throw new InvalidArgumentException('$cropWidth must be numeric');
+			throw new \InvalidArgumentException('$cropWidth must be numeric');
 		}
 
 		if ($cropHeight !== null && !is_numeric($cropHeight))
 		{
-			throw new InvalidArgumentException('$cropHeight must be numeric');
+			throw new \InvalidArgumentException('$cropHeight must be numeric');
 		}
 
 		if ($cropHeight === null)
@@ -781,22 +781,22 @@ class GdThumb extends ThumbBase
 		// validate input
 		if (!is_numeric($startX))
 		{
-			throw new InvalidArgumentException('$startX must be numeric');
+			throw new \InvalidArgumentException('$startX must be numeric');
 		}
 
 		if (!is_numeric($startY))
 		{
-			throw new InvalidArgumentException('$startY must be numeric');
+			throw new \InvalidArgumentException('$startY must be numeric');
 		}
 
 		if (!is_numeric($cropWidth))
 		{
-			throw new InvalidArgumentException('$cropWidth must be numeric');
+			throw new \InvalidArgumentException('$cropWidth must be numeric');
 		}
 
 		if (!is_numeric($cropHeight))
 		{
-			throw new InvalidArgumentException('$cropHeight must be numeric');
+			throw new \InvalidArgumentException('$cropHeight must be numeric');
 		}
 
 		// do some calculations
@@ -888,12 +888,12 @@ class GdThumb extends ThumbBase
 	{
 		if (!is_numeric($degrees))
 		{
-			throw new InvalidArgumentException('$degrees must be numeric');
+			throw new \InvalidArgumentException('$degrees must be numeric');
 		}
 
 		if (!function_exists('imagerotate'))
 		{
-			throw new RuntimeException('Your version of GD does not support image rotation.');
+			throw new \RuntimeException('Your version of GD does not support image rotation.');
 		}
 
 		$this->workingImage = imagerotate($this->oldImage, $degrees, 0);
@@ -917,12 +917,12 @@ class GdThumb extends ThumbBase
 	{
 		if (!is_numeric($filter))
 		{
-			throw new InvalidArgumentException('$filter must be numeric');
+			throw new \InvalidArgumentException('$filter must be numeric');
 		}
 
 		if (!function_exists('imagefilter'))
 		{
-			throw new RuntimeException('Your version of GD does not support image filters.');
+			throw new \RuntimeException('Your version of GD does not support image filters.');
 		}
 
 		$result = false;
@@ -934,7 +934,7 @@ class GdThumb extends ThumbBase
 
 		if (!$result)
 		{
-			throw new RuntimeException('GD imagefilter failed');
+			throw new \RuntimeException('GD imagefilter failed');
 		}
 
 		$this->workingImage = $this->oldImage;
@@ -956,7 +956,7 @@ class GdThumb extends ThumbBase
 	{
 		if (headers_sent() && php_sapi_name() != 'cli')
 		{
-			throw new RuntimeException('Cannot show image, headers have already been sent');
+			throw new \RuntimeException('Cannot show image, headers have already been sent');
 		}
 
 		// When the interlace option equals true or false call imageinterlace else leave it to default
@@ -1035,7 +1035,7 @@ class GdThumb extends ThumbBase
 
 		if (!in_array($format, $validFormats))
 		{
-			throw new InvalidArgumentException ('Invalid format type specified in save function: ' . $format);
+			throw new \InvalidArgumentException ('Invalid format type specified in save function: ' . $format);
 		}
 
 		// make sure the directory is writeable
@@ -1049,13 +1049,13 @@ class GdThumb extends ThumbBase
 				// throw an exception if not writeable
 				if (!is_writeable(dirname($fileName)))
 				{
-					throw new RuntimeException ('File is not writeable, and could not correct permissions: ' . $fileName);
+					throw new \RuntimeException ('File is not writeable, and could not correct permissions: ' . $fileName);
 				}
 			}
 			// throw an exception if not writeable
 			else
 			{
-				throw new RuntimeException ('File not writeable: ' . $fileName);
+				throw new \RuntimeException ('File not writeable: ' . $fileName);
 			}
 		}
 
@@ -1101,7 +1101,7 @@ class GdThumb extends ThumbBase
 		// make sure we've gotten a proper argument
 		if (!is_array($options))
 		{
-			throw new InvalidArgumentException ('setOptions requires an array');
+			throw new \InvalidArgumentException ('setOptions requires an array');
 		}
 
 		// we've yet to init the default options, so create them here
