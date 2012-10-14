@@ -15,7 +15,6 @@
         }
     ],
     "autoload": {
-        "psr-0": { "PhpThumb": "src" }
+        "psr-0": { "PhpThumb\\": "src/" }
     },
-    "target-dir" : "PhpThumb"
 }
