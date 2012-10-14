@@ -13,5 +13,9 @@
             "name" : "Łukasz Pospiech",
             "email" : "zocimek@gmail.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-0": { "PhpThumb": "src" }
+    },
+    "target-dir" : "PhpThumb"
 }
